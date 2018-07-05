@@ -15,7 +15,6 @@ export function installToast (window) {
       `background: ${color}; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff`,
       'background:transparent')
 
-    console.log('VEOCI DEV TOOL FORK');
     if (!document.body) {
       return // somehow, the body didn't load yet. Skip the toast here
     }
