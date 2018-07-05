@@ -14,6 +14,11 @@ export function installToast (window) {
       'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
       `background: ${color}; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff`,
       'background:transparent')
+
+    if (!document.body) {
+      return // somehow, the body didn't load yet. Skip the toast here
+    }
+
     if (!toastEl) {
       toastEl = document.createElement('div')
       toastEl.addEventListener('click', removeToast)
@@ -57,7 +62,7 @@ export function installToast (window) {
 
   function removeToast () {
     clearTimeout(toastTimer)
-    if (toastEl) {
+    if (toastEl && document.body) {
       document.body.removeChild(toastEl)
       toastEl = null
     }
